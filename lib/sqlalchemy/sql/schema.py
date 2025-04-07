@@ -4780,7 +4780,7 @@ class ForeignKeyConstraint(ColumnCollectionConstraint):
         if len(set(columns)) != len(refcolumns):
             if len(set(columns)) != len(columns):
                 # e.g. FOREIGN KEY (a, a) REFERENCES r (b, c)
-                raise exc.ArgumentError(
+                util.warn(
                     "ForeignKeyConstraint with duplicate source column "
                     "references are not supported."
                 )
